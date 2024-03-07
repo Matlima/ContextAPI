@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
+import Home from "./routes/Home";
+import Contact from './routes/Contact.jsx';
+
+// 1 - criando provider
+import { CounterContextProvider } from './context/CounterContext.jsx';
 
 // 1 - configurando router
 import { createBrowserRouter, RouterProvider, Route, Navigate} from "react-router-dom";
-
-// 2 - componente base
-import Home from "./routes/Home";
-
-// 3 - página de contato
-import Contact from './routes/Contact.jsx';
 
 const router = createBrowserRouter ([
   {
@@ -40,6 +39,8 @@ const router = createBrowserRouter ([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <RouterProvider router={router} />
+     <CounterContextProvider>
+      <RouterProvider router={router} />
+     </CounterContextProvider>
   </React.StrictMode>,
 )
